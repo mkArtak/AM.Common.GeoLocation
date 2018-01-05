@@ -1,0 +1,8 @@
+language: csharp
+solution: AM.Common.GeoLocation.sln
+mono: none
+dotnet: 2.0.0
+script:
+ - dotnet restore
+ - dotnet build
+ - dotnet test ./test/AM.Common.GeoLocation.Tests/AM.Common.GeoLocation.Tests.csproj
