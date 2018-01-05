@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/Geo.Common/bin
+/src/Geo.Common/obj
+/test/Geo.Common.Tests/bin
+/test/Geo.Common.Tests/obj
+/src/AM.Common.GeoLocation/bin
+/src/AM.Common.GeoLocation/obj
+/test/AM.Common.GeoLocation.Tests/bin
+/test/AM.Common.GeoLocation.Tests/obj
