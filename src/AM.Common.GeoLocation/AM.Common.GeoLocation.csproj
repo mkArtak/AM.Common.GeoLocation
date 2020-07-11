@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
-    <Version>1.0.0</Version>
+    <Version>2.2.0</Version>
     <Authors>Artak Mkrtchyan</Authors>
     <Company />
     <PackageTags>geo location distance unit coordinate</PackageTags>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>This package contains geo-location representing data structures as well as some APIs for calculating distances between geo-locations</Description>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <FileVersion>2.1.0.0</FileVersion>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
+    <FileVersion>2.2.0.0</FileVersion>
     <PackageReleaseNotes>Fixed some APIs.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/mkArtak/AM.Common.GeoLocation</PackageProjectUrl>
     <RepositoryUrl>https://github.com/mkArtak/AM.Common.GeoLocation</RepositoryUrl>
