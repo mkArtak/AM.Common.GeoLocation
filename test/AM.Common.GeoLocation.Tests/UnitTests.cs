@@ -1,14 +1,14 @@
 ﻿using Xunit;
 
-namespace AM.Common.Validation.Tests
+namespace AM.Common.GeoLocation.Tests
 {
     public class UnitTests
     {
         [Fact]
         public void GetHashCode_ValuesAreDifferentForDifferentTypesOfUnits()
         {
-            Unit unit1 = Unit.Kilometer;
-            Unit unit2 = Unit.Meter;
+            GeoDistanceUnit unit1 = GeoDistanceUnit.Kilometer;
+            GeoDistanceUnit unit2 = GeoDistanceUnit.Meter;
 
             int hashCode1 = unit1.GetHashCode();
             int hashCode2 = unit2.GetHashCode();
@@ -19,8 +19,8 @@ namespace AM.Common.Validation.Tests
         [Fact]
         public void GetHashCode_ReturnsConsistentValues()
         {
-            int hashCode1 = Unit.Meter.GetHashCode();
-            int hashCode2 = Unit.Meter.GetHashCode();
+            int hashCode1 = GeoDistanceUnit.Meter.GetHashCode();
+            int hashCode2 = GeoDistanceUnit.Meter.GetHashCode();
 
             Assert.Equal(hashCode1, hashCode2);
         }

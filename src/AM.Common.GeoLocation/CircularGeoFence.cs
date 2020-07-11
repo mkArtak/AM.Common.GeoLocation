@@ -1,43 +1,44 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace AM.Common.GeoLocation
 {
-    public class CircularGeoFence : GeoFence
+    /// <summary>
+    /// Represents a geo-fence which has a shape of a circle, determined by its center location and the radius.
+    /// </summary>
+    public class CircularGeoFence : IGeoFence
     {
         public const string RadiusPropertyName = nameof(Radius);
         public const string LatitudePropertyName = nameof(GeoCoordinate.Latitude);
         public const string LongitudePropertyName = nameof(GeoCoordinate.Longitude);
 
-        public CircularGeoFence(double latitude, double longitude, double radiusInMiles)
+        public CircularGeoFence(double latitude, double longitude, double radiusInMiles) : this(new GeoCoordinate(latitude, longitude), new Distance(radiusInMiles, GeoDistanceUnit.Mile))
         {
-            this.Location = new GeoCoordinate(latitude, longitude);
-            this.Radius = new Distance(radiusInMiles, Unit.Mile);
         }
 
-        public GeoCoordinate Location { get; set; }
+        public CircularGeoFence(GeoCoordinate centerLocation, Distance radius)
+        {
+            this.CenterLocation = centerLocation;
+            this.Radius = radius;
+        }
 
+        /// <summary>
+        /// Gets or sets the location of the center
+        /// </summary>
+        public GeoCoordinate CenterLocation { get; set; }
+
+        /// <summary>
+        /// Gets or sets the radius of the fence.
+        /// </summary>
         public Distance Radius { get; set; }
 
-        public override Task<bool> IsLocationWithinAsync(GeoCoordinate location)
+        public Task<bool> IsLocationWithinAsync(GeoCoordinate location)
         {
             TaskCompletionSource<bool> result = new TaskCompletionSource<bool>();
 
-            Distance distance = location.DistanceTo(this.Location);
+            Distance distance = location.DistanceTo(this.CenterLocation);
             result.SetResult(distance <= this.Radius);
 
             return result.Task;
-        }
-
-        public override IDictionary<string, string> ToSerializableData()
-        {
-            IDictionary<string, string> result = new Dictionary<string, string>
-            {
-                [LatitudePropertyName] = this.Location.Latitude.ToString(),
-                [LongitudePropertyName] = this.Location.Longitude.ToString(),
-                [RadiusPropertyName] = this.Radius.ToString()
-            };
-            return result;
         }
     }
 }

@@ -7,13 +7,13 @@ namespace AM.Common.GeoLocation
     /// </summary>
     public struct Distance
     {
-        private readonly Unit unitOfLength;
+        private readonly GeoDistanceUnit unitOfLength;
         private readonly double value;
 
         /// <summary>
-        /// Gets the <see cref="Unit"/> the distance <see cref="Value"/> is represented in.
+        /// Gets the <see cref="GeoDistanceUnit"/> the distance <see cref="Value"/> is represented in.
         /// </summary>
-        public Unit UnitOfLength => this.unitOfLength;
+        public GeoDistanceUnit UnitOfLength => this.unitOfLength;
 
         /// <summary>
         /// Gets the distance value, in the units specified through <see cref="UnitOfLength"/> units.
@@ -25,7 +25,7 @@ namespace AM.Common.GeoLocation
         /// </summary>
         /// <param name="value">The value in the units specified through the <see cref="unit"/> parameter.</param>
         /// <param name="unit">The unit the <see cref="value"/> is specified in.</param>
-        public Distance(double value, Unit unit)
+        public Distance(double value, GeoDistanceUnit unit)
         {
             this.value = value;
             this.unitOfLength = unit;
@@ -34,9 +34,9 @@ namespace AM.Common.GeoLocation
         /// <summary>
         /// Creates a new <see cref="Distance"/> instance with the same value as current instance, converted into the specified <see cref="unit"/> unit.
         /// </summary>
-        /// <param name="unit">The <see cref="Unit"/> to convert the distance value to.</param>
+        /// <param name="unit">The <see cref="GeoDistanceUnit"/> to convert the distance value to.</param>
         /// <returns></returns>
-        public Distance Convert(Unit unit)
+        public Distance Convert(GeoDistanceUnit unit)
         {
             Distance result;
             if (unit == this.UnitOfLength)
@@ -111,7 +111,7 @@ namespace AM.Common.GeoLocation
 
         public override int GetHashCode()
         {
-            return this.Convert(Unit.Meter).Value.GetHashCode();
+            return this.Convert(GeoDistanceUnit.Meter).Value.GetHashCode();
         }
     }
 }

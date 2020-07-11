@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace AM.Common.Validation.Tests
+namespace AM.Common.GeoLocation.Tests
 {
     public class GeoCoordinateTests
     {
         [Fact]
         public void Equals_ReturnsTrueForSameDistances()
         {
-            Distance d1 = new Distance(20, Unit.Foot);
-            Distance d2 = new Distance(20, Unit.Foot);
+            Distance d1 = new Distance(20, GeoDistanceUnit.Foot);
+            Distance d2 = new Distance(20, GeoDistanceUnit.Foot);
 
             Assert.True(d1.Equals(d2));
         }
@@ -19,8 +19,8 @@ namespace AM.Common.Validation.Tests
         [Fact]
         public void EqualityOperator_ReturnsTrueForSameDistances()
         {
-            Distance d1 = new Distance(20, Unit.Foot);
-            Distance d2 = new Distance(20, Unit.Foot);
+            Distance d1 = new Distance(20, GeoDistanceUnit.Foot);
+            Distance d2 = new Distance(20, GeoDistanceUnit.Foot);
 
             Assert.True(d1 == d2);
         }
@@ -28,8 +28,8 @@ namespace AM.Common.Validation.Tests
         [Fact]
         public void InequalityOperator_ReturnsFalseForSameDistance()
         {
-            Distance d1 = new Distance(20, Unit.Foot);
-            Distance d2 = new Distance(20, Unit.Foot);
+            Distance d1 = new Distance(20, GeoDistanceUnit.Foot);
+            Distance d2 = new Distance(20, GeoDistanceUnit.Foot);
 
             Assert.False(d1 != d2);
         }
@@ -37,8 +37,8 @@ namespace AM.Common.Validation.Tests
         [Fact]
         public void InequalityOperator_ReturnsTrueForUnequalDistance()
         {
-            Distance d1 = new Distance(21, Unit.Foot);
-            Distance d2 = new Distance(20, Unit.Foot);
+            Distance d1 = new Distance(21, GeoDistanceUnit.Foot);
+            Distance d2 = new Distance(20, GeoDistanceUnit.Foot);
 
             Assert.True(d1 != d2);
         }

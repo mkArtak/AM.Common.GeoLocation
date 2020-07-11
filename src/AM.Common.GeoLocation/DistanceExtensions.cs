@@ -18,7 +18,7 @@ namespace AM.Common.GeoLocation
             Distance result;
             if (location1 == location2)
             {
-                result = new Distance(0, Unit.Foot);
+                result = new Distance(0, GeoDistanceUnit.Foot);
             }
             else
             {
@@ -32,7 +32,7 @@ namespace AM.Common.GeoLocation
 
                 dist = dist * 180 / Math.PI;
                 dist = dist * 60 * 1.1515;
-                result = new Distance(dist, Unit.Mile);
+                result = new Distance(dist, GeoDistanceUnit.Mile);
             }
 
             return result;

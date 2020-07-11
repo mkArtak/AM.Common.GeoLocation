@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace AM.Common.Validation.Tests
+namespace AM.Common.GeoLocation.Tests
 {
     public class DistanceExtensionsTests
     {
@@ -13,7 +13,7 @@ namespace AM.Common.Validation.Tests
 
             Distance actualDistance = coordinate1.DistanceTo(coordinate2);
 
-            Distance expectedDistance = new Distance(0, Unit.Meter);
+            Distance expectedDistance = new Distance(0, GeoDistanceUnit.Meter);
 
             Assert.Equal(expectedDistance, actualDistance);
         }

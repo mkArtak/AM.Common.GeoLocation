@@ -6,34 +6,33 @@ namespace AM.Common.GeoLocation
     /// <summary>
     /// Represents a unit of distance.
     /// </summary>
-    public struct Unit
+    public struct GeoDistanceUnit
     {
         /// <summary>
         /// Represenst the Meter unit.
         /// </summary>
-        public static Unit Meter;
+        public static readonly GeoDistanceUnit Meter;
 
         /// <summary>
         /// Represents the Foot unit.
         /// </summary>
-        public static Unit Foot;
+        public static readonly GeoDistanceUnit Foot;
 
         /// <summary>
         /// Represents the Kilometer unit.
         /// </summary>
-        public static Unit Kilometer;
+        public static readonly GeoDistanceUnit Kilometer;
 
         /// <summary>
         /// Represents the Mile unit.
         /// </summary>
-        public static Unit Mile;
+        public static readonly GeoDistanceUnit Mile;
 
-        private static IDictionary<Units, double> unitConversionMapFromMeters = new Dictionary<Units, double>();
+        private static readonly IDictionary<Units, double> unitConversionMapFromMeters = new Dictionary<Units, double>();
 
-        private readonly double factor;
         private readonly Units unit;
 
-        static Unit()
+        static GeoDistanceUnit()
         {
             unitConversionMapFromMeters.Add(Units.Millimeter, 0.001);
             unitConversionMapFromMeters.Add(Units.Centimeter, 0.01);
@@ -45,34 +44,34 @@ namespace AM.Common.GeoLocation
             unitConversionMapFromMeters.Add(Units.Mile, 1609.344);
             unitConversionMapFromMeters.Add(Units.NauticalMile, 1852);
 
-            Meter = new Unit(Units.Meter, unitConversionMapFromMeters[Units.Meter]);
-            Foot = new Unit(Units.Foot, unitConversionMapFromMeters[Units.Foot]);
-            Kilometer = new Unit(Units.Kilometer, unitConversionMapFromMeters[Units.Kilometer]);
-            Mile = new Unit(Units.Mile, unitConversionMapFromMeters[Units.Mile]);
+            Meter = new GeoDistanceUnit(Units.Meter, unitConversionMapFromMeters[Units.Meter]);
+            Foot = new GeoDistanceUnit(Units.Foot, unitConversionMapFromMeters[Units.Foot]);
+            Kilometer = new GeoDistanceUnit(Units.Kilometer, unitConversionMapFromMeters[Units.Kilometer]);
+            Mile = new GeoDistanceUnit(Units.Mile, unitConversionMapFromMeters[Units.Mile]);
         }
 
         /// <summary>
         /// Gets the conversion factor.
         /// </summary>
-        public double ConversionFactor { get { return this.factor; } }
+        public double ConversionFactor { get; private set; }
 
         /// <summary>
-        /// Creates a new instance of <see cref="Unit"/> type, given the supported distance unit-type and the conversion factor, from meters.
+        /// Creates a new instance of <see cref="GeoDistanceUnit"/> type, given the supported distance unit-type and the conversion factor, from meters.
         /// </summary>
         /// <param name="unit">The <see cref="Units"/> representing the distnace unit.</param>
         /// <param name="conversionFactor">The conversion factor of a single value of unit from meter.</param>
-        private Unit(Units unit, double conversionFactor)
+        private GeoDistanceUnit(Units unit, double conversionFactor)
         {
             this.unit = unit;
-            this.factor = conversionFactor;
+            this.ConversionFactor = conversionFactor;
         }
 
-        public static bool operator ==(Unit item1, Unit item2)
+        public static bool operator ==(GeoDistanceUnit item1, GeoDistanceUnit item2)
         {
             return item1.unit == item2.unit;
         }
 
-        public static bool operator !=(Unit item1, Unit item2)
+        public static bool operator !=(GeoDistanceUnit item1, GeoDistanceUnit item2)
         {
             return item1.unit != item2.unit;
         }
@@ -89,12 +88,12 @@ namespace AM.Common.GeoLocation
                 throw new ArgumentException("Invalid argument");
             }
 
-            if (obj.GetType() != typeof(Unit))
+            if (obj.GetType() != typeof(GeoDistanceUnit))
             {
                 throw new ArgumentException("Invalid type");
             }
 
-            return (Unit)obj == this;
+            return (GeoDistanceUnit)obj == this;
         }
 
         /// <summary>
