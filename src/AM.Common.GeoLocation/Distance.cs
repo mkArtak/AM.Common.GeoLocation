@@ -1,14 +1,14 @@
 ﻿using System;
 
-namespace AM.Common.Validation
+namespace AM.Common.GeoLocation
 {
     /// <summary>
     /// Represents distance in unit-agnostic way.
     /// </summary>
     public struct Distance
     {
-        private Unit unitOfLength;
-        private double value;
+        private readonly Unit unitOfLength;
+        private readonly double value;
 
         /// <summary>
         /// Gets the <see cref="Unit"/> the distance <see cref="Value"/> is represented in.

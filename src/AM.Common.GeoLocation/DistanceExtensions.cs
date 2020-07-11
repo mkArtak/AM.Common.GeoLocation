@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AM.Common.Validation
+namespace AM.Common.GeoLocation
 {
     /// <summary>
     /// Encapsulates extension methods targeting <see cref="GeoCoordinate"/> type.

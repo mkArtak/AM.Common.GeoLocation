@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AM.Common.Validation
+namespace AM.Common.GeoLocation
 {
     /// <summary>
     /// Represents a unit of distance.
