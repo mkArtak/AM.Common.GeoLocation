@@ -5,7 +5,7 @@ namespace AM.Common.GeoLocation
     /// <summary>
     /// Represents a geo location coordinate.
     /// </summary>
-    public struct GeoCoordinate
+    public struct GeoCoordinate : IEquatable<GeoCoordinate>
     {
         /// <summary>
         /// Gets or sets the Latitude value of the coordinate.

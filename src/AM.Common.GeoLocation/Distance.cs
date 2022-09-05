@@ -5,7 +5,7 @@ namespace AM.Common.GeoLocation
     /// <summary>
     /// Represents distance in unit-agnostic way.
     /// </summary>
-    public struct Distance
+    public struct Distance : IEquatable<Distance>
     {
         private readonly GeoDistanceUnit unitOfLength;
         private readonly double value;
